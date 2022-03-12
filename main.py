@@ -74,11 +74,10 @@ def handle_dialog(res, req):
         # начал пользователь игру или нет.
         if not sessionStorage[user_id]['game_started']:
             # игра не начата, значит мы ожидаем ответ на предложение сыграть.
-            if 'да' in req['request']['nlu']['tokens'] or
-            # Добавлены варианты ответов
-            'ага' in req['request']['nlu']['tokens'] or
-            'ок' in req['request']['nlu']['tokens'] or
-            'хорошо' in req['request']['nlu']['tokens']:
+            if 'да' in req['request']['nlu']['tokens'] or \
+                    'ага' in req['request']['nlu']['tokens'] or \
+                    'ок' in req['request']['nlu']['tokens'] or \
+                    'хорошо' in req['request']['nlu']['tokens']:
                 # если пользователь согласен, то проверяем не отгадал ли он уже все города.
                 # По схеме можно увидеть, что здесь окажутся и пользователи, которые уже отгадывали города
                 if len(sessionStorage[user_id]['guessed_cities']) == 7:
