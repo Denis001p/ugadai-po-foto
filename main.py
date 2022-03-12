@@ -11,7 +11,11 @@ logging.basicConfig(level=logging.INFO)
 cities = {
     'москва': ['1540737/daa6e420d33102bf6947', '213044/7df73ae4cc715175059e'],
     'нью-йорк': ['1652229/728d5c86707054d4745f', '1030494/aca7ed7acefde2606bdc'],
-    'париж': ["1652229/f77136c2364eb90a3ea8", '123494/aca7ed7acefd12e606bdc']
+    'париж': ["1652229/f77136c2364eb90a3ea8", '123494/aca7ed7acefd12e606bdc'],
+    'липецк': ["213044/2c32ade174310e737017", "213044/cac326b76d9edf1fd284"],
+    'берлин': ["1030494/305d67cc79d35abacc5b", "213044/292d70bcbd47414601f5"],
+    'киев': ["1540737/b59cb92efe1c204f5905", "1521359/109d3368f4a919918152"],
+    'улан-батор': ["1521359/9ba31f0620eff460e077", "1652229/2db750fd3ac44c3ed2fd"]
 }
 
 sessionStorage = {}
@@ -72,7 +76,7 @@ def handle_dialog(res, req):
             if 'да' in req['request']['nlu']['tokens']:
                 # если пользователь согласен, то проверяем не отгадал ли он уже все города.
                 # По схеме можно увидеть, что здесь окажутся и пользователи, которые уже отгадывали города
-                if len(sessionStorage[user_id]['guessed_cities']) == 3:
+                if len(sessionStorage[user_id]['guessed_cities']) == 7:
                     # если все три города отгаданы, то заканчиваем игру
                     res['response']['text'] = 'Ты отгадал все города!'
                     res['end_session'] = True
